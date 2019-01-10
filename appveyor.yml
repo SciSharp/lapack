@@ -1,9 +1,9 @@
-os: Visual Studio 2017
-configuration: Release
-clone_depth: 50
-
-matrix:
-  fast_finish: false
+version: 0.7.{build}
+pull_requests:
+  do_not_increment_build_number: true
+image:
+- Ubuntu1804
+- Visual Studio 2019 Preview
 
 skip_commits:
 # Add [av skip] to commit messages
@@ -15,22 +15,33 @@ cache:
 environment:
   global:
     CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
+    CMAKE_BUILD_TYPE: Release
+    CMAKE_BUILD_TYPE: Coverage
 
 install:
-  - call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
-  - conda config --add channels conda-forge --force
-  - conda install --yes --quiet cmake flang jom
-  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
-  - set "LIB=%CONDA_INSTALL_LOCN%\Library\lib;%LIB%"
-  - set "CPATH=%CONDA_INSTALL_LOCN%\Library\include;%CPATH%"
+  - cmd : call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
+  - cmd : conda config --add channels conda-forge --force
+  - cmd : conda install --yes --quiet cmake flang jom
+  - cmd : call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
+  - cmd : set "LIB=%CONDA_INSTALL_LOCN%\Library\lib;%LIB%"
+  - cmd : set "CPATH=%CONDA_INSTALL_LOCN%\Library\include;%CPATH%"
+  - sh :  sudo apt-get install cmake
+  - sh :  sudo apt-get install cmake-data
+  - sh :  sudo apt-get install gfortran
+
 
 before_build:
-  - ps: if (-Not (Test-Path .\build)) { mkdir build }
+  - ps: if (-Not (Test-Path .\build)) { mkdir build } else { Remove-Item .\build -Force -Recurse; mkdir build}
   - cd build
   - cmake -G "NMake Makefiles JOM" -DCMAKE_Fortran_COMPILER=flang -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON ..
 
 build_script:
   - cmake --build .
+after_build:
+  - pwsh: "&($env:APPVEYOR_BUILD_FOLDER + '/compressLibs.ps1')"
 
+artifacts:
+  - path: artLibs.zip
+    name: LAPACK_DLLS
 test_script:
   - ctest -j2

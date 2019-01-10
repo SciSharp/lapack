@@ -1,5 +1,9 @@
 # LAPACK
 
+IMPORTAN NOTICE!!!! THIS IS THE SCISHARP FORK OF LAPACK CONTAINING THE LAPACK ORIGINAL CODE PLUS C# ADAPTER CODE! 
+
+IF YOU FIND BUGS OR MODIFICATIONS BEST SOLUTION WOULD BE FORK LAPACK DIRECTLY AND DO PULL REQUEST.
+
 [![Build Status](https://travis-ci.org/Reference-LAPACK/lapack.svg?branch=master)](https://travis-ci.org/Reference-LAPACK/lapack)
 [![Appveyor](https://ci.appveyor.com/api/projects/status/bh38iin398msrbtr?svg=true)](https://ci.appveyor.com/project/langou/lapack/)
 [![codecov](https://codecov.io/gh/Reference-LAPACK/lapack/branch/master/graph/badge.svg)](https://codecov.io/gh/Reference-LAPACK/lapack)
