@@ -32,10 +32,12 @@ install:
 before_build:
   - ps: if (-Not (Test-Path .\build)) { mkdir build } else { Remove-Item .\build -Force -Recurse; mkdir build}
   - cd build
-  - cmake -G "NMake Makefiles JOM" -DCMAKE_Fortran_COMPILER=flang -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON ..
+  - cmd : cmake -G "NMake Makefiles JOM" -DCMAKE_Fortran_COMPILER=flang -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON ..
+  - 
 
 build_script:
-  - cmake --build .
+  - cmd : cmake --build .
+  - sh : cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCBLAS:BOOL=ON -DLAPACKE:BOOL=ON -DBUILD_TESTING=ON -DLAPACKE_WITH_TMG:BOOL=ON .. 
 after_build:
   - pwsh: "&($env:APPVEYOR_BUILD_FOLDER + '/compressLibs.ps1')"
 
