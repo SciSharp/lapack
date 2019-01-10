@@ -37,7 +37,8 @@ before_build:
 
 build_script:
   - cmd : cmake --build .
-  - sh : cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCBLAS:BOOL=ON -DLAPACKE:BOOL=ON -DBUILD_TESTING=OFF -DLAPACKE_WITH_TMG:BOOL=ON --build . 
+  - sh : cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCBLAS:BOOL=ON -DLAPACKE:BOOL=ON -DBUILD_TESTING=OFF -DLAPACKE_WITH_TMG:BOOL=ON --build ..
+  - sh : make install -j2
   - ps : Get-ChildItem -Recurse . | % {$_.FullName }
 
 artifacts:
