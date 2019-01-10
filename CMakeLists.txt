@@ -42,7 +42,7 @@ if(_is_coverage_build)
 endif()
 
 # By default static library
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 include(GNUInstallDirs)
 
