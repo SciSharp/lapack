@@ -24,9 +24,9 @@ install:
   - cmd : call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" amd64
   - cmd : set "LIB=%CONDA_INSTALL_LOCN%\Library\lib;%LIB%"
   - cmd : set "CPATH=%CONDA_INSTALL_LOCN%\Library\include;%CPATH%"
-  - sh :  sudo apt-get install cmake
-  - sh :  sudo apt-get install cmake-data
-  - sh :  sudo apt-get install gfortran
+  - sh :  sudo apt-get -y install cmake
+  - sh :  sudo apt-get -y install cmake-data
+  - sh :  sudo apt-get -y install gfortran
 
 
 before_build:
