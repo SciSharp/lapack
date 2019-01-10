@@ -16,7 +16,6 @@ environment:
   global:
     CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
     CMAKE_BUILD_TYPE: Release
-    CMAKE_BUILD_TYPE: Coverage
 
 install:
   - cmd : call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
