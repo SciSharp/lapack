@@ -33,15 +33,14 @@ before_build:
   - ps: if (-Not (Test-Path .\build)) { mkdir build } else { Remove-Item .\build -Force -Recurse; mkdir build}
   - cd build
   - cmd : cmake -G "NMake Makefiles JOM" -DCMAKE_Fortran_COMPILER=flang -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON ..
-  - 
 
 build_script:
   - cmd : cmake --build .
-  - sh : cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCBLAS:BOOL=ON -DLAPACKE:BOOL=ON -DBUILD_TESTING=OFF -DLAPACKE_WITH_TMG:BOOL=ON --build ..
-  - sh : make install -j2
+  - sh : cmake -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE} -DCBLAS:BOOL=ON -DLAPACKE:BOOL=ON -DBUILD_TESTING=ON -DLAPACKE_WITH_TMG:BOOL=ON --build ..
+  - sh : make 
 
 after_build:
-  - ps : "&($env:APPVEYOR_BUILD_FOLDER + '/compressLibs.ps1')"  
+  - ps : "&($env:APPVEYOR_BUILD_FOLDER + '/compressAndStoreLibs.ps1')"  
 
 artifacts:
   - path: artLibs.zip
