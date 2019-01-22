@@ -11,17 +11,17 @@
     <Copyright></Copyright>
     <RepositoryUrl></RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>0.6.4</Version>
-    <PackageLicenseUrl>LICENSE</PackageLicenseUrl>
+    <Version>3.8.0</Version>
+    <PackageLicenseUrl>https://github.com/Reference-LAPACK/lapack/blob/master/LICENSE</PackageLicenseUrl>
     <LangVersion>latest</LangVersion>
     <PackageId>NetLib.LAPACK</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
-	  <Content CopyToOutputDirectory="PreserveNewest" Include="../build/bin/lapack.dll" Link="lapack.dll" Pack="true" PackagePath="runtimes/win-x64/native/lapack.dll" />
-    <Content CopyToOutputDirectory="PreserveNewest" Include="../build/bin/blas.dll" Link="blas.dll" Pack="true" PackagePath="runtimes/win-x64/native/blas.dll" />
-    <Content CopyToOutputDirectory="PreserveNewest" Include="../build/libblas.so" Link="blas.so" Pack="true" PackagePath="runtimes/linux-x64/native/blas.so" />
-    <Content CopyToOutputDirectory="PreserveNewest" Include="../build/liblapack.so" Link="lapack.so" Pack="true" PackagePath="runtimes/linux-x64/native/lapack.so" />
+	  <Content CopyToOutputDirectory="PreserveNewest" Include="../build/lib/lapack.dll" Link="lapack.dll" Pack="true" PackagePath="runtimes/win-x64/native/lapack.dll" />
+    <Content CopyToOutputDirectory="PreserveNewest" Include="../build/lib/blas.dll" Link="blas.dll" Pack="true" PackagePath="runtimes/win-x64/native/blas.dll" />
+    <Content CopyToOutputDirectory="PreserveNewest" Include="../build/lib/libblas.so" Link="blas.so" Pack="true" PackagePath="runtimes/linux-x64/native/blas.so" />
+    <Content CopyToOutputDirectory="PreserveNewest" Include="../build/lib/liblapack.so" Link="lapack.so" Pack="true" PackagePath="runtimes/linux-x64/native/lapack.so" />
   </ItemGroup>
 
 </Project>

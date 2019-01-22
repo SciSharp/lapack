@@ -16,6 +16,8 @@ environment:
   global:
     CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
     CMAKE_BUILD_TYPE: Release
+  api_key:
+    secure: KuMHEmnUUXn/BsSI/CgbMvkn7bGysWT+H/rCf6R1sPI=
 
 install:
   - cmd : call %CONDA_INSTALL_LOCN%\Scripts\activate.bat
